@@ -1,0 +1,16 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: task-manager
+  datasource:
+    url: jdbc:mysql://localhost:3306/master_db
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+tenant:
+  default:
+    name: tenant1
