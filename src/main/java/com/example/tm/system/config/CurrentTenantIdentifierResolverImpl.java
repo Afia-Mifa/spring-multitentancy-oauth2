@@ -7,8 +7,7 @@ import org.springframework.stereotype.Component;
 public class CurrentTenantIdentifierResolverImpl implements CurrentTenantIdentifierResolver<ClientDatabase> {
     @Override
     public ClientDatabase resolveCurrentTenantIdentifier() {
-        ClientDatabase clientDatabase = ClientDatabaseContextHolder.getClientDatabase();
-        return clientDatabase;
+        return ClientDatabaseContextHolder.getClientDatabase();
     }
 
     @Override

@@ -2,7 +2,7 @@ package com.example.tm.system.config;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.hibernate.engine.jdbc.connections.spi.AbstractDataSourceBasedMultiTenantConnectionProviderImpl;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.hibernate.engine.jdbc.connections.spi.MultiTenantConnectionProvider;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
@@ -18,7 +18,7 @@ public class DataSourceBasedMultiTenantConnectionProviderImpl extends AbstractDa
 
     private final Map<ClientDatabase, DataSource> tenantDataSources = new ConcurrentHashMap<>();
 
-    public DataSourceBasedMultiTenantConnectionProviderImpl(@Qualifier("masterDataSource") DataSource masterDataSource) {
+    public DataSourceBasedMultiTenantConnectionProviderImpl(DataSource masterDataSource) {
         this.masterDataSource = masterDataSource;
 //        loadTenantsFromMasterDb();
     }

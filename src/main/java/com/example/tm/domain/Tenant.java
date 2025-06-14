@@ -4,23 +4,22 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.TenantId;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class AppUser extends BaseEntity {
+public class Tenant extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    private String tenantId;
+
     private String name;
 
-    private String userName;
-
-    private String passwordHash;
-
-    @ManyToOne
-    private Tenant tenant;
+    @OneToOne
+    private Organization organization;
 }

@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AppUser extends BaseEntity {
+public class Organization extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,10 +17,8 @@ public class AppUser extends BaseEntity {
 
     private String name;
 
-    private String userName;
+    @Column(unique = true)
+    private String code;
 
-    private String passwordHash;
-
-    @ManyToOne
-    private Tenant tenant;
+    private String domain;
 }
