@@ -20,6 +20,12 @@ public class Tenant extends BaseEntity {
 
     private String name;
 
+    private String dbUrl;
+
+    private String dbUser;
+
+    private String dbPassword;
+
     @OneToOne
     private Organization organization;
 }

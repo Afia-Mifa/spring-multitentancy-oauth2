@@ -1,5 +1,6 @@
 package com.example.tm.system.config;
 
+import com.zaxxer.hikari.HikariDataSource;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,11 @@ public class ClientDataSourceRouter extends AbstractRoutingDataSource {
     @Autowired
     private CurrentTenantIdentifierResolverImpl currentTenantIdentifierResolver;
 
-
     ClientDataSourceRouter() {
         setDefaultTargetDataSource(masterDataSource());
         HashMap<Object, Object> targetDataSources = new HashMap<>();
-        targetDataSources.put("tenant1", masterDataSource());
+        targetDataSources.put("t1", t1());
+        targetDataSources.put("t2", t1());
         setTargetDataSources(targetDataSources);
     }
 
@@ -32,6 +33,13 @@ public class ClientDataSourceRouter extends AbstractRoutingDataSource {
                 .build();
     }
 
+    public DataSource t1() {
+        HikariDataSource ds = new HikariDataSource();
+        ds.setJdbcUrl("jdbc:mysql://localhost:3306/tm_tenant1");
+        ds.setUsername("root");
+        ds.setPassword("root");
+        return ds;
+    }
 
     @Override
     protected ClientDatabase determineCurrentLookupKey() {

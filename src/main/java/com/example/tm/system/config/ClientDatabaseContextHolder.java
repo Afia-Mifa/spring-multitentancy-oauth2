@@ -12,7 +12,7 @@ public class ClientDatabaseContextHolder {
     }
 
     public static ClientDatabase getClientDatabase() {
-        return CONTEXT.get();
+        return ClientDatabase.t1;
     }
 
     public static void clear() {
