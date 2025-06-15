@@ -14,14 +14,14 @@ public class MultitenantConfiguration extends HikariDataSource {
     @Value("${tenant.default.name}")
     private String defaultTenant;
 
-    @Bean(name = "masterDataSource")
-    public DataSource masterDataSource() {
-        return DataSourceBuilder.create()
-                .url("jdbc:mysql://localhost:3306/master_db")
-                .username("root")
-                .password("root")
-                .build();
-    }
+//    @Bean(name = "masterDataSource")
+//    public DataSource masterDataSource() {
+//        return DataSourceBuilder.create()
+//                .url("jdbc:mysql://localhost:3306/master_db")
+//                .username("root")
+//                .password("root")
+//                .build();
+//    }
 
 //    @Bean
 //    public DataSource dataSource() {
