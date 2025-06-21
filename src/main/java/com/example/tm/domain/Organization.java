@@ -21,4 +21,7 @@ public class Organization extends BaseEntity {
     private String code;
 
     private String domain;
+
+    @OneToOne
+    private Tenant tenant;
 }

@@ -1,9 +1,7 @@
-package com.example.tm;
+package com.example.tm.controller;
 
-import com.example.tm.domain.AppUser;
-import com.example.tm.repositories.AppUserRepository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import com.example.tm.domain.Employee;
+import com.example.tm.repositories.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,12 +19,15 @@ public class TestController {
 //
 //    private final AppUserRepository appUserRepository;
 
+    private final EmployeeRepository employeeRepository;
+
     private final JdbcTemplate jdbcTemplate;
 
     @GetMapping
     public ResponseEntity<?> get() {
-        String sql = "SELECT COUNT(*) FROM app_user";
-        Integer i = jdbcTemplate.queryForObject(sql, Integer.class);
+//        String sql = "SELECT COUNT(*) FROM employee";
+//        Integer i = jdbcTemplate.queryForObject(sql, Integer.class);
+        Employee employee = employeeRepository.findById("root").orElseThrow();
         return ResponseEntity.ok().build();
     }
 }

@@ -39,11 +39,11 @@
 ////
 ////                Properties tenantProperties = yamlFactory.getObject();
 ////                assert tenantProperties != null;
-////                String tenantId = tenantProperties.getProperty("name");
+////                String clientDatabase = tenantProperties.getProperty("name");
 ////                dataSourceBuilder.username(tenantProperties.getProperty("datasource.username"));
 ////                dataSourceBuilder.password(tenantProperties.getProperty("datasource.password"));
 ////                dataSourceBuilder.url(tenantProperties.getProperty("datasource.url"));
-////                resolvedDataSources.put(tenantId, dataSourceBuilder.build());
+////                resolvedDataSources.put(clientDatabase, dataSourceBuilder.build());
 ////            }
 ////        } catch (Exception exp) {
 ////            throw new RuntimeException("Problem in tenant datasource:" + exp);
