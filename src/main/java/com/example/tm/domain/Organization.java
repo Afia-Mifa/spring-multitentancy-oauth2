@@ -22,6 +22,6 @@ public class Organization extends BaseEntity {
 
     private String domain;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, optional = false)
     private Tenant tenant;
 }

@@ -1,12 +1,11 @@
 package com.example.tm.controller;
 
-import com.example.tm.OauthService;
+import com.example.tm.service.OauthService;
 import com.example.tm.domain.OauthToken;
 import com.example.tm.utils.CookieUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

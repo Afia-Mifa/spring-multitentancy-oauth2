@@ -22,7 +22,7 @@ public class TaskApplication {
     @Bean(name = "masterDataSource")
     public DataSource masterDataSource() {
         return DataSourceBuilder.create()
-                .url("jdbc:mysql://192.168.0.9:3306/master_db")
+                .url("jdbc:mysql://localhost:3306/master_db")
                 .username("remote")
                 .password("remote")
                 .build();

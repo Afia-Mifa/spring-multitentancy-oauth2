@@ -24,7 +24,7 @@ public class CookieUtils {
             throw new RuntimeException("Error while encoding cookie value", ex);
         }
         String setCookieHeader = String.format(
-                "%s=%s; Max-Age=%d; Path=/; SameSite=None; Secure",
+                "%s=%s; Max-Age=%d; Path=/; SameSite=None;",
                 name, value, cookieAge
         );
         response.addHeader(HttpHeaders.SET_COOKIE, setCookieHeader);

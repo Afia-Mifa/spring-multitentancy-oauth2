@@ -6,6 +6,8 @@ import org.hibernate.engine.jdbc.connections.spi.AbstractDataSourceBasedMultiTen
 import org.hibernate.engine.jdbc.connections.spi.MultiTenantConnectionProvider;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernatePropertiesCustomizer;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
@@ -23,6 +25,10 @@ public class DataSourceBasedMultiTenantConnectionProviderImpl extends AbstractDa
 
     public DataSourceBasedMultiTenantConnectionProviderImpl(@Qualifier("masterDataSource") DataSource masterDataSource) {
         this.masterDataSource = masterDataSource;
+    }
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void loadTenantsAfterStartup() {
         loadTenantsFromMasterDb();
     }
 
