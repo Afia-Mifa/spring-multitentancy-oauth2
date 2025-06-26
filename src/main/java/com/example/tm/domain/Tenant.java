@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.TenantId;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -28,4 +30,7 @@ public class Tenant extends BaseEntity {
 
     @OneToOne
     private Organization organization;
+
+    @OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TenantPermission> permissions;
 }

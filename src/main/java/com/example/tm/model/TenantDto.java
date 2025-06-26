@@ -1,4 +1,7 @@
 package com.example.tm.model;
 
-public record TenantDto(long id, String name, String tenantId, String dbUrl, String dbUser, String dbPassword) {
+import java.util.List;
+
+public record TenantDto(long id, String name, String tenantId, String dbUrl, String dbUser, String dbPassword,
+                        List<TenantPermissionDto> permissions) {
 }

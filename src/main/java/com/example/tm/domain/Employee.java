@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -28,6 +29,11 @@ public class Employee extends BaseEntity {
 
     @ManyToOne
     private Organization organization;
+
+    @JoinTable(name = "employee_permissions",
+            joinColumns = {@JoinColumn(name = "permission_id")},
+            inverseJoinColumns = {@JoinColumn(name = "employee_id")})
+    private List<Feature> features;
 
     @Enumerated(EnumType.STRING)
     private Status status;
