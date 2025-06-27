@@ -28,9 +28,6 @@ public class Tenant extends BaseEntity {
 
     private String dbPassword;
 
-    @OneToOne
-    private Organization organization;
-
     @OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TenantPermission> permissions;
 }

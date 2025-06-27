@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,6 +23,6 @@ public class TenantPermission extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @ManyToOne
-    private List<Feature> features;
+    @ManyToMany
+    private List<Feature> features = new ArrayList<>();
 }

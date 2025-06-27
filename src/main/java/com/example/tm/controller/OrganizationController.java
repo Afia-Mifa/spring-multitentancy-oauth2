@@ -6,6 +6,7 @@ import com.example.tm.model.OrganizationMapper;
 import com.example.tm.service.OrganizationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -18,7 +19,8 @@ public class OrganizationController {
     private final OrganizationService organizationService;
     private final OrganizationMapper organizationMapper;
 
-    @GetMapping("id")
+    @GetMapping("{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     ResponseEntity<?> getById(@PathVariable long id) {
         OrganizationDto dto = organizationService.find(id).map(organizationMapper::toDto).orElseThrow();
         return ResponseEntity.ok(dto);

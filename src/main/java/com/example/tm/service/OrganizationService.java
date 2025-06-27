@@ -56,7 +56,6 @@ public class OrganizationService {
         tenant.setDbUrl(dto.dbUrl());
         tenant.setDbUser(dto.dbUser());
         tenant.setDbPassword(dto.dbPassword());
-        tenant.setOrganization(organization);
 
         List<TenantPermission> permissions = dto.permissions().stream().map(d -> {
             List<Feature> features = featureRepository.findByIdIn(d.getFeatures());
@@ -68,7 +67,6 @@ public class OrganizationService {
         }).toList();
 
         tenant.setPermissions(permissions);
-
         return tenant;
     }
 }

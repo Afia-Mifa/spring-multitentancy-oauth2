@@ -1,5 +1,6 @@
 package com.example.tm.controller;
 
+import com.example.tm.context.ActiveContextHolder;
 import com.example.tm.domain.Employee;
 import com.example.tm.repositories.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,20 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("test")
 public class TestController {
 
-//    @PersistenceContext
-//    private EntityManager em;
-//
-//    private final AppUserRepository appUserRepository;
-
-    private final EmployeeRepository employeeRepository;
-
-    private final JdbcTemplate jdbcTemplate;
-
-    @GetMapping
+    @GetMapping("app-status")
     public ResponseEntity<?> get() {
-//        String sql = "SELECT COUNT(*) FROM employee";
-//        Integer i = jdbcTemplate.queryForObject(sql, Integer.class);
-        Employee employee = employeeRepository.findById("root").orElseThrow();
         return ResponseEntity.ok().build();
     }
 }
