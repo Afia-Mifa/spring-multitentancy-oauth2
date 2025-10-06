@@ -1,0 +1,36 @@
+server:
+  port: 8080
+#logging:
+#  level:
+#    org.springframework.security: trace
+spring:
+  application:
+    name: task-manager
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9000
+  datasource:
+    url: jdbc:mysql://localhost:3306/master_db
+    username: remote
+    password: remote
+  flyway:
+    enabled: false
+    baseline-on-migrate: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+oauth2:
+  client-id: ${APP_AUTH_CLIENT_ID:my-client}
+  client-secret: ${APP_AUTH_CLIENT_SECRET:secret}
+  redirect-uri: ${APP_AUTH_REDIRECT_URL:http://localhost:8080/auth/callback}
+  logout-uri: ${APP_AUTH_LOGOUT_URL:http://localhost:8080/auth/logout}
+  authorization-uri: ${APP_AUTH_AUTHORIZATION_URL:http://localhost:9000/oauth2/authorize}
+  token-uri: ${APP_AUTH_TOKEN_URL:http://localhost:9000/oauth2/token}
+  base-uri: ${APP_AUTH_TOKEN_URL:http://localhost:9000}
+  jwks-uri: ${APP_AUTH_JWKS_URL:http://localhost:9000/oauth2/jwks}
+tenant:
+  default:
+    name: tenant1

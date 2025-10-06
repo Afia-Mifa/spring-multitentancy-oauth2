@@ -1,0 +1,5 @@
+name: tenant2
+datasource:
+    url: jdbc:mysql://localhost:3306/tm_tenant2
+    username: root
+    password: root
